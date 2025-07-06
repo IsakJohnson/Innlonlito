@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inlonnito - The Anonymusk Meme Token</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -88,29 +89,6 @@
             display: block;
             text-align: center;
         }
-        .token-data {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .data-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-        }
-        .data-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: #f1c40f;
-        }
-        .data-item p {
-            font-size: 1.1em;
-            margin: 0;
-        }
         section {
             padding: 50px 20px;
             max-width: 1000px;
@@ -125,26 +103,6 @@
         p {
             font-size: 1.1em;
             line-height: 1.6;
-        }
-        .image-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .image-item {
-            width: 300px;
-            text-align: center;
-        }
-        .image-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .image-item p {
-            margin: 10px 0 0;
-            font-size: 1em;
         }
         .social-links {
             margin: 20px 0;
@@ -162,18 +120,10 @@
         .social-links a:hover {
             background: #2980b9;
         }
-        .tokenomics {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .token-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
+        .social-links a i {
+            margin-right: 8px;
+            font-size: 1.2em;
+            color: #ffffff;
         }
         footer {
             text-align: center;
@@ -204,77 +154,24 @@
         </div>
     </header>
     <img src="images/banner.gif" alt="Inlonnito Banner" class="banner">
-    <section id="live-data">
-        <h2>Live Token Data</h2>
-        <div class="token-data">
-            <div class="data-item">
-                <h3>Price (USD)</h3>
-                <p id="price">Loading...</p>
-            </div>
-            <div class="data-item">
-                <h3>24h Change</h3>
-                <p id="change">Loading...</p>
-            </div>
-            <div class="data-item">
-                <h3>Market Cap</h3>
-                <p id="market-cap">Loading...</p>
-            </div>
-        </div>
-    </section>
     <section id="about">
         <h2>About Inlonnito</h2>
         <p>The Anonymusk Community is a raw, real community. No scams, no BS- 70% of our tokens are burned to a dead wallet to keep things legit and screw over scammers</p>
     </section>
-    <section id="gallery">
-        <h2>Our Vision</h2>
-        <div class="image-gallery">
-            <div class="image-item">
-                <img src="https://source.unsplash.com/300x200/?space,rocket" alt="Rocket Launch">
-                <p>Rocket to the Moon</p>
-            </div>
-            <div class="image-item">
-                <img src="https://source.unsplash.com/300x200/?anonymous,mask" alt="Anonymous Mask">
-                <p>Anonymusk Vibes</p>
-            </div>
-            <div class="image-item">
-                <img src="https://source.unsplash.com/300x200/?mars,space" alt="Mars Landscape">
-                <p>Mars or Bust</p>
-            </div>
-        </div>
-    </section>
     <section id="community">
         <h2>Join the Community</h2>
         <div class="social-links">
-            <a href="https://t.me/innlonlito" target="_blank">Telegram</a>
-            <a href="https://www.mexc.com/es/dex/trade?pair_ca=AfeEPF1zvF2J5bYrFWAAku3X9AJHNi3rPz8zGrUDep2h&chain_id=100000&token_ca=EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump&base_token_ca=So11111111111111111111111111111111111111112" target="_blank">MEXC</a>
-            <a href="https://x.com/i/communities/1941586566675300488" target="_blank">X Community</a>
-        </div>
-    </section>
-    <section id="tokenomics">
-        <h2>Tokenomics</h2>
-        <div class="tokenomics">
-            <div class="token-item">
-                <h3>Total Supply</h3>
-                <p>1,000,000,000 INNL</p>
-            </div>
-            <div class="token-item">
-                <h3>Circulating</h3>
-                <p>500,000,000 INNL</p>
-            </div>
-            <div class="token-item">
-                <h3>Burn Rate</h3>
-                <p>1% per transaction</p>
-            </div>
+            <a href="https://t.me/innlonlito" target="_blank"><i class="fab fa-telegram-plane"></i>Telegram</a>
+            <a href="https://www.mexc.com/es/dex/trade?pair_ca=AfeEPF1zvF2J5bYrFWAAku3X9AJHNi3rPz8zGrUDep2h&chain_id=100000&token_ca=EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump&base_token_ca=So11111111111111111111111111111111111111112" target="_blank"><i class="fas fa-chart-line"></i>MEXC</a>
+            <a href="https://x.com/i/communities/1941586566675300488" target="_blank"><i class="fab fa-x-twitter"></i>X Community</a>
         </div>
     </section>
     <footer>
         <p>© 2025 Inlonnito. To the Stars, Anonymously!</p>
-        <p>Data provided by <a href="https://www.coingecko.com/en/api" target="_blank">CoinGecko</a></p>
     </footer>
     <div class="rocket">🚀</div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Copy button logic
             const copyButtons = document.querySelectorAll('.copy-button');
             if (!copyButtons.length) {
                 console.error('Error: No elements with class "copy-button" found in DOM');
@@ -329,52 +226,6 @@
                     button.setAttribute('data-original-text', button.textContent);
                 }
             });
-
-            // Live token data fetch with CoinGecko Pro API
-            async function fetchTokenData() {
-                const contractAddress = 'EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump';
-                const apiKey = '6d4017884d83d2ff1fdb8dc63aa76c312f0a1bb9ca826696482ae8576ec03949';
-                const apiUrl = `https://pro-api.coingecko.com/api/v3/coins/solana/contract/${contractAddress}?x_cg_pro_api_key=${apiKey}`;
-                try {
-                    const response = await fetch(apiUrl);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    const marketData = data.market_data;
-                    document.getElementById('price').textContent = `$${marketData.current_price.usd.toFixed(6)}`;
-                    const change = marketData.price_change_percentage_24h.toFixed(2);
-                    document.getElementById('change').textContent = `${change}%`;
-                    document.getElementById('change').style.color = change >= 0 ? '#2ecc71' : '#e74c3c';
-                    document.getElementById('market-cap').textContent = marketData.market_cap.usd ? `$${marketData.market_cap.usd.toLocaleString()}` : 'N/A';
-                } catch (error) {
-                    console.error('CoinGecko fetch error:', error);
-                    // Fallback to GeckoTerminal API
-                    try {
-                        const fallbackUrl = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${contractAddress}`;
-                        const fallbackResponse = await fetch(fallbackUrl);
-                        if (!fallbackResponse.ok) {
-                            throw new Error(`GeckoTerminal HTTP error! status: ${fallbackResponse.status}`);
-                        }
-                        const fallbackData = await fallbackResponse.json();
-                        const marketData = fallbackData.data.attributes;
-                        document.getElementById('price').textContent = `$${marketData.price_usd.toFixed(6)}`;
-                        const change = marketData.price_percent_change.h24.toFixed(2);
-                        document.getElementById('change').textContent = `${change}%`;
-                        document.getElementById('change').style.color = change >= 0 ? '#2ecc71' : '#e74c3c';
-                        document.getElementById('market-cap').textContent = marketData.market_cap_usd ? `$${marketData.market_cap_usd.toLocaleString()}` : 'N/A';
-                    } catch (fallbackError) {
-                        console.error('GeckoTerminal fetch error:', fallbackError);
-                        document.getElementById('price').textContent = 'Error';
-                        document.getElementById('change').textContent = 'Error';
-                        document.getElementById('market-cap').textContent = 'Error';
-                    }
-                }
-            }
-
-            // Initial fetch and periodic update
-            fetchTokenData();
-            setInterval(fetchTokenData, 60000); // Update every 60 seconds
         });
     </script>
 </body>
