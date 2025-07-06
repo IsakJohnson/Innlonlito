@@ -47,23 +47,27 @@
             word-break: break-all;
         }
         .copy-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        .copy-button:hover {
-            background: #2980b9;
-        }
-        .copy-button.copied {
-            background: #2ecc71;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background: #3498db !important;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.copy-button:hover {
+    background: #2980b9 !important;
+}
+.copy-button.copied {
+    background: #2ecc71 !important;
+}
         }
         .banner {
             max-width: 100%;
@@ -220,24 +224,33 @@
         <p>© 2025 Inlonnito. To the Stars, Anonymously!</p>
     </footer>
     <div class="rocket">🚀</div>
-    <script>
-        const copyButtons = document.querySelectorAll('.copy-button');
-copyButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const textToCopy = button.getAttribute('data-copy');
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            button.textContent = 'Copied!';
-            button.classList.add('copied');
-            setTimeout(() => {
-                button.textContent = button.getAttribute('data-original-text') || 'Copy';
-                button.classList.remove('copied');
-            }, 2000);
-        }).catch(err => {
-            alert('Failed to copy: ' + err);
+   <script>
+    const copyButtons = document.querySelectorAll('.copy-button');
+    if (!copyButtons.length) {
+        console.error('No copy buttons found');
+    }
+    copyButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const textToCopy = button.getAttribute('data-copy');
+            if (!textToCopy) {
+                console.error('No data-copy attribute found on button');
+                alert('No text to copy');
+                return;
+            }
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = button.getAttribute('data-original-text') || 'Copy CA';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                alert('Failed to copy: ' + err);
+            });
         });
+        button.setAttribute('data-original-text', button.textContent);
     });
-    button.setAttribute('data-original-text', button.textContent);
-});
-    </script>
+</script>
 </body>
 </html>
