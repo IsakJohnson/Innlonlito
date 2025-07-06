@@ -45,40 +45,47 @@
             margin: 20px 10px 10px;
             display: inline-block;
             word-break: break-all;
+            color: #ffffff !important;
+            opacity: 1 !important;
+            position: relative;
+            z-index: 1;
         }
         .copy-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 0 10px;
-    background: #3498db !important;
-    color: #fff !important;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-.copy-button:hover {
-    background: #2980b9 !important;
-}
-.copy-button.copied {
-    background: #2ecc71 !important;
-}
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #3498db !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            border-radius: 5px;
+            transition: background-color 0.3s ease !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-size: 1em !important;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            opacity: 1 !important;
+            outline: none !important;
+            position: relative;
+            z-index: 1;
+        }
+        .copy-button:hover {
+            background-color: #2980b9 !important;
+        }
+        .copy-button.copied {
+            background-color: #2ecc71 !important;
+        }
+        .copy-button:disabled {
+            background-color: #3498db !important;
+            opacity: 1 !important;
+            cursor: pointer !important;
         }
         .banner {
             max-width: 100%;
-            height: 200px;
-            background: #333;
+            height: auto;
             margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.5em;
+            display: block;
             text-align: center;
         }
         section {
@@ -169,9 +176,9 @@
         <h1>Inlonnito</h1>
         <p class="subtitle">The Anonymusk Meme Token!</p>
         <div>
-    <span class="wallet-text">EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump</span>
-    <button class="copy-button" data-copy="EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump">Copy CA</button>
-</div>
+            <span class="wallet-text">EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump</span>
+            <button class="copy-button" data-copy="EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump">Copy CA</button>
+        </div>
     </header>
     <img src="images/banner.gif" alt="Inlonnito Banner" class="banner">
     <section id="about">
@@ -199,7 +206,8 @@
         <h2>Join the Community</h2>
         <div class="social-links">
             <a href="https://t.me/innlonlito" target="_blank">Telegram</a>
-            <a href="https://www.mexc.com/es/dex/trade?pair_ca=AfeEPF1zvF2J5bYrFWAAku3X9AJHNi3rPz8zGrUDep2h&chain_id=100000&token_ca=EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump&base_token_ca=So11111111111111111111111111111111111111112" target="_blank">MEXC</a>
+            <a href="https://www.mexc.com/es/dex/trade?pair_ca=Af
+eEPF1zvF2J5bYrFWAAku3X9AJHNi3rPz8zGrUDep2h&chain_id=100000&token_ca=EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump&base_token_ca=So11111111111111111111111111111111111111112" target="_blank">MEXC</a>
             <a href="https://x.com/i/communities/1941586566675300488" target="_blank">X Community</a>
         </div>
     </section>
@@ -224,33 +232,63 @@
         <p>© 2025 Inlonnito. To the Stars, Anonymously!</p>
     </footer>
     <div class="rocket">🚀</div>
-   <script>
-    const copyButtons = document.querySelectorAll('.copy-button');
-    if (!copyButtons.length) {
-        console.error('No copy buttons found');
-    }
-    copyButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const textToCopy = button.getAttribute('data-copy');
-            if (!textToCopy) {
-                console.error('No data-copy attribute found on button');
-                alert('No text to copy');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyButtons = document.querySelectorAll('.copy-button');
+            if (!copyButtons.length) {
+                console.error('Error: No elements with class "copy-button" found in DOM');
                 return;
             }
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                button.textContent = 'Copied!';
-                button.classList.add('copied');
-                setTimeout(() => {
-                    button.textContent = button.getAttribute('data-original-text') || 'Copy CA';
-                    button.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                console.error('Copy failed:', err);
-                alert('Failed to copy: ' + err);
+            console.log('Found', copyButtons.length, 'copy buttons');
+            copyButtons.forEach((button, index) => {
+                button.disabled = false;
+                button.addEventListener('click', () => {
+                    const textToCopy = button.getAttribute('data-copy');
+                    if (!textToCopy) {
+                        console.error(`Error: No data-copy attribute on button ${index}`);
+                        alert('Error: No text to copy');
+                        return;
+                    }
+                    console.log('Attempting to copy:', textToCopy);
+                    if (!navigator.clipboard) {
+                        console.error('Clipboard API not supported');
+                        const textarea = document.createElement('textarea');
+                        textarea.value = textToCopy;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand('copy');
+                            button.textContent = 'Copied!';
+                            button.classList.add('copied');
+                            setTimeout(() => {
+                                button.textContent = button.getAttribute('data-original-text') || 'Copy CA';
+                                button.classList.remove('copied');
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Fallback copy failed:', err);
+                            alert('Failed to copy: ' + err.message);
+                        }
+                        document.body.removeChild(textarea);
+                        return;
+                    }
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        console.log('Successfully copied:', textToCopy);
+                        button.textContent = 'Copied!';
+                        button.classList.add('copied');
+                        setTimeout(() => {
+                            button.textContent = button.getAttribute('data-original-text') || 'Copy CA';
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Copy failed for button', index, ':', err);
+                        alert('Failed to copy: ' + err.message);
+                    });
+                });
+                if (!button.getAttribute('data-original-text')) {
+                    button.setAttribute('data-original-text', button.textContent);
+                }
             });
         });
-        button.setAttribute('data-original-text', button.textContent);
-    });
-</script>
+    </script>
 </body>
 </html>
