@@ -40,19 +40,30 @@
             margin: 10px 0;
             position: relative;
         }
-        .buy-button {
+        .wallet-text {
+            font-size: 1.2em;
+            margin: 20px 10px 10px;
             display: inline-block;
-            padding: 15px 30px;
-            background: #e74c3c;
+            word-break: break-all;
+        }
+        .copy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: #3498db;
             color: #fff;
             text-decoration: none;
-            font-size: 1.2em;
             border-radius: 5px;
-            margin-top: 20px;
             transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
         }
-        .buy-button:hover {
-            background: #c0392b;
+        .copy-button:hover {
+            background: #2980b9;
+        }
+        .copy-button.copied {
+            background: #2ecc71;
         }
         .banner {
             max-width: 100%;
@@ -153,7 +164,10 @@
     <header>
         <h1>Inlonnito</h1>
         <p class="subtitle">The Anonymusk Meme Token!</p>
-        <a href="#" class="buy-button">EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump</a>
+        <div>
+    <span class="wallet-text">EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump</span>
+    <button class="copy-button" data-copy="EvrVKMFYaUGGM18jAVK9fbjffwUXUc5PH1KDwaeMpump">Copy CA</button>
+</div>
     </header>
     <img src="images/banner.gif" alt="Inlonnito Banner" class="banner">
     <section id="about">
@@ -207,12 +221,23 @@
     </footer>
     <div class="rocket">🚀</div>
     <script>
-        // Simple animation for the buy button
-        const buyButton = document.querySelector('.buy-button');
-        buyButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Ready to join Anonymusk? Connect your wallet to buy Innlonlito!');
+        const copyButtons = document.querySelectorAll('.copy-button');
+copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const textToCopy = button.getAttribute('data-copy');
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+                button.textContent = button.getAttribute('data-original-text') || 'Copy';
+                button.classList.remove('copied');
+            }, 2000);
+        }).catch(err => {
+            alert('Failed to copy: ' + err);
         });
+    });
+    button.setAttribute('data-original-text', button.textContent);
+});
     </script>
 </body>
 </html>
